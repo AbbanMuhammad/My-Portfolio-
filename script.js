@@ -1,46 +1,60 @@
+// ============================
+// NAVIGATION / HAMBURGER MENU
+// ============================
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
 
-navToggle.addEventListener("click", () => {
-  navMenu.classList.toggle("is-open");
+if (navToggle && navMenu) {
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("is-open");
 
-  // Accessibility — update aria attributes
-  const isOpen = navMenu.classList.contains("is-open");
-  navToggle.setAttribute("aria-expanded", isOpen);
-  navToggle.textContent = isOpen ? "✕" : "☰";
-});
+    // Accessibility — update aria attributes
+    const isOpen = navMenu.classList.contains("is-open");
+    navToggle.setAttribute("aria-expanded", isOpen);
+    navToggle.textContent = isOpen ? "✕" : "☰";
+  });
 
-// Close menu when a link is clicked
-navMenu.addEventListener("click", (event) => {
-  if (event.target.tagName === "A") {
-    navMenu.classList.remove("is-open");
-    navToggle.textContent = "☰";
-    navToggle.setAttribute("aria-expanded", false);
-  }
-});
+  // Close menu when a link is clicked
+  navMenu.addEventListener("click", (event) => {
+    if (event.target.tagName === "A") {
+      navMenu.classList.remove("is-open");
+      navToggle.textContent = "☰";
+      navToggle.setAttribute("aria-expanded", false);
+    }
+  });
+}
 
+// ============================
+// DARK MODE TOGGLE
+// ============================
 const darkToggle = document.querySelector(".dark-mode-toggle");
 
-// Remember preference across visits
-const savedTheme = localStorage.getItem("theme") || "light";
-document.documentElement.setAttribute("data-theme", savedTheme);
-darkToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+if (darkToggle) {
+  // Remember preference across visits
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+  darkToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
 
-darkToggle.addEventListener("click", () => {
-  const current = document.documentElement.getAttribute("data-theme");
-  const next = current === "dark" ? "light" : "dark";
+  darkToggle.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    const next = current === "dark" ? "light" : "dark";
 
-  document.documentElement.setAttribute("data-theme", next);
-  localStorage.setItem("theme", next);
-  darkToggle.textContent = next === "dark" ? "☀️" : "🌙";
-});
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    darkToggle.textContent = next === "dark" ? "☀️" : "🌙";
+  });
+}
 
+// ============================
+// SCROLL HIGHLIGHT & HEADER SHRINK
+// ============================
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll("nav a");
+const header = document.querySelector("header");
 
-const highlightNav = () => {
+const handleScroll = () => {
+  // Highlight nav links
   let currentSection = "";
-
   sections.forEach(section => {
     const sectionTop = section.offsetTop - 100;
     if (window.scrollY >= sectionTop) {
@@ -54,17 +68,25 @@ const highlightNav = () => {
       link.classList.add("active");
     }
   });
+
+  // Header shrink
+  if (header) {
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  }
 };
 
-window.addEventListener("scroll", highlightNav);
-
-// Header shrink on scroll — pure JS:
-const header = document.querySelector("header");
-
+// Throttle scroll with requestAnimationFrame
+let ticking = false;
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      handleScroll();
+      ticking = false;
+    });
+    ticking = true;
   }
 });
