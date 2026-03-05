@@ -62,6 +62,11 @@ nav ul {
 }
 
 nav a {
-  text-decoration: none;
-  /* Style your links */
+    text-decoration: none;
+    /* Style your links */
+}
+
+nav a:hover {
+    /* Add a hover effect */
+    color: var(--color-primary);
 }
