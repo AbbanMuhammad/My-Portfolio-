@@ -7,10 +7,17 @@
     box-sizing: border-box;
 }
 :root {
-  /* Define YOUR color palette here */
-  --color-primary: ;
-  --color-text: ;
-  --color-background: ;
-  --color-surface: ;
-  --color-border: ;
+    /* Define YOUR color palette here */
+    --color-primary: ;
+    --color-text: ;
+    --color-background: ;
+    --color-surface: ;
+    --color-border: ;
+    
+    /* Spacing */
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
+  
 }
