@@ -151,8 +151,26 @@ article:hover {
    FOOTER
 ================================ */
 footer {
-  text-align: center;
-  padding: var(--space-lg);
-  /* Add a top border */
-  border-top: 1px solid var(--color-border);
+    text-align: center;
+    padding: var(--space-lg);
+    /* Add a top border */
+    border-top: 1px solid var(--color-border);
+}
+
+/* ================================
+   RESPONSIVE — MOBILE FIRST
+================================ */
+
+/* Tablet and above */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Desktop and above */
+@media (min-width: 1024px) {
+  main {
+    padding: var(--space-xl);
+  }
 }
