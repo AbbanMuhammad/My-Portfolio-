@@ -34,3 +34,26 @@ darkToggle.addEventListener("click", () => {
   localStorage.setItem("theme", next);
   darkToggle.textContent = next === "dark" ? "☀️" : "🌙";
 });
+
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll("nav a");
+
+const highlightNav = () => {
+  let currentSection = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (window.scrollY >= sectionTop) {
+      currentSection = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${currentSection}`) {
+      link.classList.add("active");
+    }
+  });
+};
+
+window.addEventListener("scroll", highlightNav);
