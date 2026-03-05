@@ -62,10 +62,10 @@ nav ul {
 }
 
 nav a {
-  text-decoration: none;
-  color: var(--color-text);        /* normal state — matches body text */
-  font-weight: 500;                /* slightly bold — stands out in nav */
-  transition: color 0.2s ease;    /* smooth color change on hover */
+    text-decoration: none;
+    color: var(--color-text); /* normal state — matches body text */
+    font-weight: 500; /* slightly bold — stands out in nav */
+    transition: color 0.2s ease; /* smooth color change on hover */
 }
 
 nav a:hover {
@@ -90,10 +90,10 @@ section {
 /* ================================
    HOME / HERO SECTION
 ================================ */
-#home {
-    /* Center the content */
-    text-align: center;
-    padding: var(--space-xl) 0;
+#home p {
+  max-width: 600px;
+  margin: 0 auto;        /* center it since parent is text-align: center */
+  color: var(--color-text-light, #666); /* slightly lighter than headings */
 }
 
 h1 {
@@ -165,14 +165,14 @@ footer {
 
 /* Tablet and above */
 @media (min-width: 768px) {
-  h1 {
-    font-size: 3rem;
-  }
+    h1 {
+        font-size: 3rem;
+    }
 }
 
 /* Desktop and above */
 @media (min-width: 1024px) {
-  main {
-    padding: var(--space-xl);
-  }
+    main {
+        padding: var(--space-xl);
+    }
 }
