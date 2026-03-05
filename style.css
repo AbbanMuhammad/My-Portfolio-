@@ -23,7 +23,15 @@
     /* Border radius */
     --radius-md: 8px;
     --radius-lg: 16px;
-    
+
     /* Shadow */
-  --shadow-md: 0 4px 12px rgba
+    --shadow-md: 0 4px 12px rgba;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
 }
