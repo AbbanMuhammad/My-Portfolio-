@@ -52,11 +52,16 @@ header {
 }
 
 nav ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  /* Align links to the right */
-  justify-content: flex-end;
-  gap: var(--space-lg);
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* Align links to the right */
+    justify-content: flex-end;
+    gap: var(--space-lg);
+}
+
+nav a {
+  text-decoration: none;
+  /* Style your links */
 }
