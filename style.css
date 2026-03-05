@@ -62,8 +62,10 @@ nav ul {
 }
 
 nav a {
-    text-decoration: none;
-    /* Style your links */
+  text-decoration: none;
+  color: var(--color-text);        /* normal state — matches body text */
+  font-weight: 500;                /* slightly bold — stands out in nav */
+  transition: color 0.2s ease;    /* smooth color change on hover */
 }
 
 nav a:hover {
