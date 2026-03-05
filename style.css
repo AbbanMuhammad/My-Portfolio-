@@ -91,9 +91,9 @@ section {
    HOME / HERO SECTION
 ================================ */
 #home p {
-  max-width: 600px;
-  margin: 0 auto;        /* center it since parent is text-align: center */
-  color: var(--color-text-light, #666); /* slightly lighter than headings */
+    max-width: 600px;
+    margin: 0 auto; /* center it since parent is text-align: center */
+    color: var(--color-text-light, #666); /* slightly lighter than headings */
 }
 
 h1 {
@@ -143,6 +143,7 @@ article {
     box-shadow: var(--shadow-md);
     /* Add a hover effect */
     transition: transform 0.3s ease;
+    border-left: 4px solid var(--color-primary);
 }
 
 article:hover {
@@ -151,13 +152,15 @@ article:hover {
 
 /* ================================
    FOOTER
-================================ */
-footer {
-    text-align: center;
-    padding: var(--space-lg);
-    /* Add a top border */
-    border-top: 1px solid var(--color-border);
+================================ */footer {
+  text-align: center;
+  padding: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  /* Add: */
+  color: #888;
+  font-size: 0.875rem;
 }
+
 
 /* ================================
    RESPONSIVE — MOBILE FIRST
