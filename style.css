@@ -29,9 +29,19 @@
 }
 
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--color-background);
-  color: var(--color-text);
-  line-height: 1.6;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* ================================
+   NAVIGATION
+================================ */
+header {
+  /* Make it sticky so it stays at top while scrolling */
+  position: sticky;
+  top: 0;
+  /* Add background, padding, shadow */
 }
