@@ -9,13 +9,14 @@
     padding: 0;
 }
 
+/* Default theme variables (already in :root) */
 :root {
-    /* Color Palette */
     --color-primary: #2563eb;
     --color-text: #1f2933;
     --color-background: #f9fafb;
     --color-surface: #ffffff;
     --color-border: #e5e7eb;
+    /* ... other variables ... */
 
     /* Spacing */
     --space-sm: 8px;
@@ -29,6 +30,14 @@
 
     /* Shadow */
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --color-background: #0a0a0f;
+    --color-surface: #111120;
+    --color-text: #e0e0e0;
+    --color-border: #2a2a3e;
 }
 
 body {
