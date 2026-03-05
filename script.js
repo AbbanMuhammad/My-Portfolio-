@@ -18,3 +18,19 @@ navMenu.addEventListener("click", (event) => {
     navToggle.setAttribute("aria-expanded", false);
   }
 });
+
+const darkToggle = document.querySelector(".dark-mode-toggle");
+
+// Remember preference across visits
+const savedTheme = localStorage.getItem("theme") || "light";
+document.documentElement.setAttribute("data-theme", savedTheme);
+darkToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+
+darkToggle.addEventListener("click", () => {
+  const current = document.documentElement.getAttribute("data-theme");
+  const next = current === "dark" ? "light" : "dark";
+
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+  darkToggle.textContent = next === "dark" ? "☀️" : "🌙";
+});
