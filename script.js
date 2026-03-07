@@ -1,27 +1,34 @@
-// ============================
+// ======================================
 // NAVIGATION / HAMBURGER MENU
-// ============================
+// ======================================
 
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
 
+// Guard clause to prevent crashes
 if (navToggle && navMenu) {
 
   navToggle.addEventListener("click", () => {
+
     navMenu.classList.toggle("is-open");
 
     const isOpen = navMenu.classList.contains("is-open");
 
     navToggle.setAttribute("aria-expanded", isOpen);
     navToggle.textContent = isOpen ? "✕" : "☰";
+
   });
 
+  // Close menu when clicking a link
   navMenu.addEventListener("click", (event) => {
 
     if (event.target.tagName === "A") {
+
       navMenu.classList.remove("is-open");
+
       navToggle.textContent = "☰";
       navToggle.setAttribute("aria-expanded", false);
+
     }
 
   });
@@ -29,14 +36,15 @@ if (navToggle && navMenu) {
 }
 
 
-// ============================
+// ======================================
 // DARK MODE TOGGLE
-// ============================
+// ======================================
 
 const darkToggle = document.querySelector(".dark-mode-toggle");
 
 if (darkToggle) {
 
+  // Load saved theme
   const savedTheme = localStorage.getItem("theme") || "light";
 
   document.documentElement.setAttribute("data-theme", savedTheme);
@@ -45,24 +53,26 @@ if (darkToggle) {
 
   darkToggle.addEventListener("click", () => {
 
-    const current = document.documentElement.getAttribute("data-theme");
+    const currentTheme = document.documentElement.getAttribute("data-theme");
 
-    const next = current === "dark" ? "light" : "dark";
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
 
-    document.documentElement.setAttribute("data-theme", next);
+    document.documentElement.setAttribute("data-theme", nextTheme);
 
-    localStorage.setItem("theme", next);
+    localStorage.setItem("theme", nextTheme);
 
-    darkToggle.textContent = next === "dark" ? "☀️" : "🌙";
+    darkToggle.textContent = nextTheme === "dark" ? "☀️" : "🌙";
 
   });
 
 }
 
 
-// ============================
+// ======================================
 // SCROLL FEATURES
-// ============================
+// - Active navigation
+// - Header shrink
+// ======================================
 
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll("nav a");
@@ -70,7 +80,10 @@ const header = document.querySelector("header");
 
 function handleScroll() {
 
-  // Highlight navigation
+  // -------------------
+  // Active Nav Highlight
+  // -------------------
+
   let currentSection = "";
 
   sections.forEach(section => {
@@ -93,7 +106,11 @@ function handleScroll() {
 
   });
 
-  // Header shrink effect
+
+  // -------------------
+  // Header shrink
+  // -------------------
+
   if (header) {
 
     if (window.scrollY > 50) {
@@ -107,9 +124,9 @@ function handleScroll() {
 }
 
 
-// ============================
-// THROTTLED SCROLL LISTENER
-// ============================
+// ======================================
+// OPTIMIZED SCROLL LISTENER
+// ======================================
 
 let ticking = false;
 
